@@ -76,6 +76,7 @@ const Home: NextPage = () => {
           <Image
             src="./img/logo.png"
             objectFit={"cover"}
+            alt="logo"
             w={"80px"}
             h={"80px"}
             mr={5}

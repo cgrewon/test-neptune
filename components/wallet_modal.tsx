@@ -165,8 +165,7 @@ export default function WalletModal({
           ) : (
             <Box mt={5}>
               <Text color={"red.700"} fontSize="md">
-                Wallet not connected. Please click the "Connect Now" button
-                below.
+                Wallet not connected. Please click the &quot;Connect Now&quot; button bellow.
               </Text>
             </Box>
           )}
