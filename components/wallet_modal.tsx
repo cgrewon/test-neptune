@@ -189,6 +189,9 @@ export default function WalletModal({
             <Button colorScheme="red" mr={3} onClick={onDisconnect}>
               Disconnect
             </Button>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Close
+            </Button>
           </Stack>
         ) : (
           <HStack gap={2} p={5}>
