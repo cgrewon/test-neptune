@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Text,
@@ -28,7 +28,7 @@ import {
 import { shortAddr } from "../utils/utils";
 import useBalances from "../utils/hooks/useBalances";
 import { formatEther } from "@ethersproject/units";
-const { useChainId, useAccounts, useIsActivating, useIsActive, useProvider } =
+const { useChainId, useAccounts, useIsActivating, useIsActive, useProvider, useError } =
   hooks;
 
 export default function WalletModal({
@@ -41,6 +41,7 @@ export default function WalletModal({
   const toast = useToast();
   const chainId = useChainId();
   const accounts = useAccounts();
+  const error = useError();
   const isActivating = useIsActivating();
   const isActive = useIsActive();
 
@@ -73,6 +74,18 @@ export default function WalletModal({
     }     
 
   };
+
+  useEffect(()=>{
+    if(error && error.message && toast){
+      toast({
+        title: 'Failed to Connect',
+        description: error.message,
+        status: 'error',
+        duration: 6000,
+        isClosable: true,
+      });
+    }
+  }, [error, toast]);
 
   let chain: undefined | BasicChainInformation | ExtendedChainInformation;
   let nativeCurrency:
